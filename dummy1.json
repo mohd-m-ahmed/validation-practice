@@ -1,0 +1,13 @@
+{
+    "name": "Kris Fletcher ",
+    "gender": "male",
+    "age": 30,
+    "joiningDate": "2017-11-13",
+    "emailId": "kris@gmail.com",
+    "contactNumber": "(410)804-4694",
+    "creditCardNumber": 9876543210987654,
+    "billingAddress": {
+         "streetAddress1": "394",
+         "type": "office"
+   }
+}

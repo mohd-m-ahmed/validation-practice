@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "name": "John Doe",
+  "age": 20,
+  "gamesIPlay": ["Ludo", "Cricket"],
+  "hobbiesDetails": [
+    {
+      "gameName": "Ludo",
+      "minPlayers": 2,
+      "maxPlayers": 4
+    },
+    {
+      "gameName": "Cricket",
+      "minPlayers": 11,
+      "maxPlayers": 15
+    }
+  ],
+  "dailySchedule": [
+    {
+      "name": "morning",
+      "tasks": ["brush", "bath"]
+    },
+    {
+      "name": "night",
+      "tasks": ["walk", "brush"]
+    }
+  ],
+  "tasksAccordingToAge": ["vote", "work"]
+}
+
+
+
+1. id, name, age - required
+2. gamesIPlay - minimum 1 items and maximum 2 items
+3. according to gameName, check min and max players
+4. dailySchedule requires morning and night. 
+    a. And morning requires "brush" and "bath". 
+    b. And night requires "walk" and "brush". 
+    c. And morning and night should have minimum 2 items
+5. tasksAccordingToAge either have vote or work if age is greater than 18.

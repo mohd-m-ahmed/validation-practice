@@ -1,0 +1,13 @@
+{
+    "id":1,
+    "name":"Jessa",
+    "class":9,
+    "attendance":75,
+    "subjects":[
+        "english",
+        "physics",
+        "world history",
+        "geometry"
+    ],
+    "email": "jess@ex.com"
+}

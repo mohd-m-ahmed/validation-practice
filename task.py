@@ -1,225 +1,213 @@
 import jsonschema
 import json
-path= "C:/Users/mohd.m.ahmed/OneDrive - InTimeTec Visionsoft Pvt. Ltd.,/Desktop/Practice/task/task.json"
+path= "C:/Users/mohd.m.ahmed/OneDrive - InTimeTec Visionsoft Pvt. Ltd.,/Desktop/Task/task.json"
 with open(path) as file:
     data= json.load(file)
 schema={
-    "type":"object",
-    "properties":{
-        "id":{
-            "type":"integer"
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
         },
-        "name":{
-            "type":"string"
+        "name": {
+            "type": "string"
         },
-        "age":{
-            "type":"integer"
+        "age": {
+            "type": "integer"
         },
-        "gamesIPlay":{
-            "type":"array",
-            "items":{
-                "type":"string"
+        "gamesIPlay": {
+            "type": "array",
+            "items": {
+                "type": "string"
             },
-            "minItems":1,
-            "maxItems":2
+            "minItems": 1,
+            "maxItems": 2
         },
-        "hobbiesDetails":{
-            "type":"array",
-            "items":{
-                "type":"object",
-                "properties":{
-                    "gameName":{
-                        "type":"string"
+        "hobbiesDetails": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "gameName": {
+                        "type": "string"
                     },
-                    "minPlayers":{
-                        "type":"integer",
+                    "minPlayers": {
+                        "type": "integer",
                     },
-                    "maxPlayers":{
-                        "type":"integer"
+                    "maxPlayers": {
+                        "type": "integer"
                     }
                 },
-             "allOf":[
-                 {
-                     "if":{
-                         "properties":{
-                             "gameName":{"const":"Ludo"}
-                             }
-                             },
-                    "then":{
-                        "properties":{
-                            "minPlayers": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "gameName": {
+                                    "const": "Ludo"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "minPlayers": {
                                     "const": 2
                                 },
                                 "maxPlayers": {
-                                    "const":4
+                                    "const": 4
                                 }
                             }
-                            }
-                },
-                
-                {
-                    "if":{
-                        "properties":{
-                            "gameName":{"const":"Cricket"}
-                            }
-                            },
-                    "then":{
-                        "properties":{
-                            "minPlayers":{"const":11},
-                            "maxPlayers":{"const":15}
-                            }
                         }
-                }
-                ]
-                }},
-        "dailySchedule":{
-            "type":"array",
-            "allOf":
-                    [
-                        {
-                        "contains":{
-                            "properties":{
-                             "name": {"const": "morning"}
-                           }
-                           }
-                        },
-                        {
-                        "contains":{
-                            "properties":{
-                                "name":{"const":"night"}
-                            }
-                        }
-                        }
-                    ],
-            "items":{
-                "type":"object",
-                "properties":{
-                    "name":{
-                        "type":"string"
                     },
-                    "tasks":{
-                        "type":"array",
-                        "minItems":2,
-                        "items":{
-                            "type":"string"
+                    {
+                        "if": {
+                            "properties": {
+                                "gameName": {
+                                    "const": "Cricket"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "minPlayers": {
+                                    "const": 11
+                                },
+                                "maxPlayers": {
+                                    "const": 15
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "dailySchedule": {
+            "type": "array",
+            "allOf": [
+                {
+                    "contains": {
+                        "properties": {
+                            "name": {
+                                "const": "morning"
+                            }
                         }
                     }
                 },
-                "allOf":[
-                    {
-                        "if":{
-                            "properties":{
-                                "name":{
-                                    "const":"morning"
-                                }
+                {
+                    "contains": {
+                        "properties": {
+                            "name": {
+                                "const": "night"
                             }
-                        },
-                        "then":{
-                            "properties":{
-                                "tasks":{
-                                    "contains":{
-                                            "const":"brush"
-                                        }
-                                        }
-                                        }
-                                }
+                        }
+                    }
+                }
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
                     },
+                    "tasks": {
+                        "type": "array",
+                        "minItems": 2,
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "allOf": [
                     {
-                        "if":{
-                            "properties":{
-                                "name":{
-                                    "const":"morning"
+                        "if": {
+                            "properties": {
+                                "name": {
+                                    "const": "morning"
                                 }
                             }
                         },
-                        "then":{
-                            "properties":{
-                                "tasks":{
-                                    "contains":{
-                                            "const":"bath"
+                        "then": {
+                            "properties": {
+                                "tasks": {
+                                    "allOf": [
+                                        {
+                                            "contains": {
+                                                "const": "brush"
+                                            }
+                                        },
+                                        {
+                                            "contains": {
+                                                "const": "bath"
                                             }
                                         }
-                                        }
-                                }
-                        },
-                        {
-                        "if":{
-                            "properties":{
-                                "name":{
-                                    "const":"night"
+                                    ]
                                 }
                             }
-                        },
-                        "then":{
-                            "properties":{
-                                "tasks":{
-                                    "contains":{
-                                        "const":"walk"
-                                        }
-                                    }
-                                    }
-                               }
-                        },
-                        {
-                        "if":{
-                            "properties":{
-                                "name":{
-                                    "const":"night"
-                                }
-                            }
-                        },
-                        "then":{
-                            "properties":{
-                                "tasks":{
-                                    "contains":{
-                                        "const":"brush"
-                                        }
-                                    }
-                                    }
-                                    }
                         }
-                    ]
-                }
-        },
-        "tasksAccordingToAge":{
-            "type":"array",
-            "items":{
-                "type":"string"
-                }
-                              }
-            },
-        
-    "required":["id",
-                "name",
-                "age"],
-                
-    "if": {
-            "properties": {
-                    "age": { 
-                        "minimum": 18
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "name": {
+                                    "const": "night"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "tasks": {
+                                    "allOf": [
+                                        {
+                                            "contains": {
+                                                "const": "walk"
+                                            }
+                                        },
+                                        {
+                                            "contains": {
+                                                "const": "brush"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     }
-                },
-   "then": {
-    "properties": {
-      "tasksAccordingToAge": {
-        "type": "array",
-       "contains": {
-           "enum": ["work","vote"]
+                ]
+            }
+        },
+        "tasksAccordingToAge": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
-      }
+    },
+    "required": [
+        "id",
+        "name",
+        "age"
+    ],
+    "if": {
+        "properties": {
+            "age": {
+                "minimum": 18
+            }
+        }
+    },
+    "then": {
+        "properties": {
+            "tasksAccordingToAge": {
+                "type": "array",
+                "contains": {
+                    "enum": [
+                        "work",
+                        "vote"
+                    ]
+                }
+            }
+        }
     }
-  }
 }
-      
-    
-        
-
-
-
-
 validator = jsonschema.Draft7Validator(schema)
-
 errors = validator.iter_errors(data)
 error_list=[]
 for error in errors:

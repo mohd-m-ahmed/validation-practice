@@ -204,10 +204,8 @@ schema={
     "properties": {
       "tasksAccordingToAge": {
         "type": "array",
-        "contains": {
-            "anyOf":[
-          {"enum": ["work"]},
-          {"enum": ["vote"]}]
+       "contains": {
+           "enum": ["work","vote"]
         }
       }
     }
